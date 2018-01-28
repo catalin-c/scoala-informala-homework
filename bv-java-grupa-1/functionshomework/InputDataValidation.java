@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class InputDataValidation {
     //The reader class member is declared and instantiated
@@ -57,7 +58,7 @@ public class InputDataValidation {
 
     /**
      * The method takes a String hour as input.
-     * Then it calls the method isInBetween().
+     * If the parameter has the right format, it calls the method isInBetween() on the integer value of the String.
      * If the hour is between the 0 and 23 (including 0 and 23), then the checkHourFormat will return true
      * and otherwise false.
      *
@@ -65,12 +66,15 @@ public class InputDataValidation {
      * @return returns a boolean if the given hour is bigger or equal than 0 and smaller or equal than 23
      */
     public boolean checkHourFormat(String hour) {
-        return isInBetween(Integer.valueOf(hour), 0, 23);
+        if(!(Pattern.matches("[a-zA-Z]+", hour))) {
+            return isInBetween(Integer.valueOf(hour), 0, 23);
+        }
+        return false;
     }
 
     /**
-     * The method takes a String minutes as input.
-     * Then it calls the method isInBetween().
+     * The method takes a String hour as input.
+     * If the parameter has the right format, it calls the method isInBetween() on the integer value of the String.
      * If the minutes value is between the 0 and 59 (including 0 and 59), then the checkHourFormat will return true
      * and otherwise false.
      *
@@ -78,7 +82,10 @@ public class InputDataValidation {
      * @return returns a boolean if the given minutes value is bigger or equal than 0 and smaller or equal than 23
      */
     public boolean checkMinutesFormat(String minutes) {
-        return isInBetween(Integer.valueOf(minutes), 0, 59);
+        if(!(Pattern.matches("[a-zA-Z]+", minutes))) {
+            return isInBetween(Integer.valueOf(minutes), 0, 59);
+        }
+        return false;
     }
 
     /**
