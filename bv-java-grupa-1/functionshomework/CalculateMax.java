@@ -1,3 +1,4 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class CalculateMax {
@@ -31,23 +32,30 @@ public class CalculateMax {
 
 
     /**
-     * First, the main method instantiates the CalculateMax class.
-     * With a while loop, it asks the user to enter 3 numbers which are stored in 3 int variables.
-     * The biggest number between the first two is assigned to the variable biggestOfFirstTwoNumbers
-     * with the help of the getMax() method. After that, it is compared with the third number
-     * and the biggest is assigned to the biggestNum variable.
+     * First, within a while loop, the main method instantiates the CalculateMax class.
+     * Then it asks the user to enter 3 numbers.
+     * The 3 variables that will store the user input are declared and then they are assigned in the try/catch block
+     * the values given by the user only if they are integers. If the user gives the wrong input,
+     * a message is printed on the console and the loop starts again.
+     * The biggest between the three numbers is assigned to the variable biggestNum
+     * with the help of the getMax() method.
      * Then, the biggest number is printed to the console and the loop starts again.
      */
     public static void main(String[] args) {
-        CalculateMax result = new CalculateMax();
         while (true) {
+            CalculateMax result = new CalculateMax();
             System.out.println("Enter three numbers: ");
-            int firstNum = result.getUserInput();
-            int secondNum = result.getUserInput();
-            int thirdNum = result.getUserInput();
+            int firstNum, secondNum, thirdNum;
+            try {
+                firstNum = result.getUserInput();
+                secondNum = result.getUserInput();
+                thirdNum = result.getUserInput();
+            } catch (InputMismatchException e) {
+                System.out.println("You entered an invalid number!");
+                continue;
+            }
 
-            int biggestOfFirstTwoNumbers = result.getMax(firstNum, secondNum);
-            int biggestNum = result.getMax(biggestOfFirstTwoNumbers, thirdNum);
+            int biggestNum = result.getMax(result.getMax(firstNum, secondNum), thirdNum);
 
             System.out.println("The biggest number is: " + biggestNum);
         }
