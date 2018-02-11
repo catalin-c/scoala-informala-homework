@@ -2,6 +2,9 @@ package products;
 
 import interfaces.VegetalProductInterface;
 
+/**
+ * Is used to model a vegetable product.
+ */
 public class VegetalProduct implements VegetalProductInterface {
 
     private String id;

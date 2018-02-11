@@ -2,6 +2,9 @@ package products;
 
 import interfaces.AnimalProductInterface;
 
+/**
+ * Is used to model an animal product.
+ */
 public class AnimalProduct implements AnimalProductInterface {
 
     private String id;

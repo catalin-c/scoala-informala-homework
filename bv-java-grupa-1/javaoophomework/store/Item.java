@@ -2,6 +2,9 @@ package store;
 
 import interfaces.ProductInterface;
 
+/**
+ * Is used to keep the stock number of a product that is attached to it.
+ */
 public class Item {
 
     private int stockNumber;

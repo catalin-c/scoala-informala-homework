@@ -10,14 +10,18 @@ import utils.UserInput;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+/**
+ * Deals with the console interface that the user can use to add, sell a product or print the sales history.
+ */
 public class Main {
-    Scanner reader = new Scanner(System.in);
 
     public static void main(String[] args) {
-
         Store store = new Store();
+
         while (true) {
+            // Deals with all the user input.
             UserInput user = new UserInput();
+
             System.out.println("-------------------------------------------------------------\n" +
                     "1. Create product and add it to stock\n" +
                     "2. Sell product\n" +
@@ -35,6 +39,7 @@ public class Main {
                 continue;
             }
 
+            //********* Create product or add it to stock *********
             if (userMainChoice == 1) {
                 System.out.println("ProductInterface type (1 - animal; 2 - vegetable): ");
                 int productType = 0;
@@ -46,6 +51,7 @@ public class Main {
                     continue;
                 }
 
+                //********* Create animal product *********
                 if (productType == 1) {
                     System.out.println("Enter product quantity: ");
                     int productQuantity = 0;
@@ -97,6 +103,7 @@ public class Main {
 
                     System.out.println("Success!");
 
+                    //********* Create vegetal product *********
                 } else if (productType == 2) {
                     System.out.println("Enter product quantity: ");
                     int productQuantity = 0;
@@ -144,6 +151,8 @@ public class Main {
                 } else {
                     System.out.println("Please enter a valid number!");
                 }
+
+                //********* Sell product *********
             } else if (userMainChoice == 2) {
                 if (store.printProducts()) {
                     System.out.println("Enter the ID of the product you want to sell:");
@@ -166,12 +175,16 @@ public class Main {
                 } else {
                     System.out.println("There aren't any products added yet!");
                 }
+
+                //********* Display daily sales report *********
             } else if (userMainChoice == 3) {
                 System.out.println("Enter the date:");
                 String date = user.getStringInput();
                 if (!store.printDailySalesReport(date)) {
                     System.out.println("Nobody bought anything in that day!");
                 }
+
+                //********* Exit the program *********
             } else if (userMainChoice == 4) {
                 System.out.println("Have a great day! Bye!");
                 break;
