@@ -1,6 +1,4 @@
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.assertEquals;
 
@@ -20,11 +18,11 @@ public class CalculateMaxTest {
         assertEquals(maxNumber, 9);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void testABEqualGetMax() {
         CalculateMax calculateMax = new CalculateMax();
         int maxNumber = calculateMax.getMax(8, 8);
-        assertEquals(maxNumber, 8);
+
     }
 
     @Test

@@ -21,13 +21,16 @@ public class CalculateMax {
      * @param b is the second number (int) given as input
      * @return returns the biggest number or the first one if they are equal
      */
-    public int getMax(int a, int b) {
+    public int getMax(int a, int b) throws IllegalArgumentException {
+        if (a == b) {
+            throw new IllegalArgumentException("The numbers shouldn't be equal.");
+        }
+
         if (a > b) {
             return a;
-        } else if (b > a) {
-            return b;
         }
-        return a;
+        return b;
+
     }
 
 
@@ -50,14 +53,14 @@ public class CalculateMax {
                 firstNum = result.getUserInput();
                 secondNum = result.getUserInput();
                 thirdNum = result.getUserInput();
+
+                int biggestNum = result.getMax(result.getMax(firstNum, secondNum), thirdNum);
+                System.out.println("The biggest number is: " + biggestNum);
             } catch (InputMismatchException e) {
-                System.out.println("You entered an invalid number!");
-                continue;
+                System.err.println("You entered an invalid number!");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
-
-            int biggestNum = result.getMax(result.getMax(firstNum, secondNum), thirdNum);
-
-            System.out.println("The biggest number is: " + biggestNum);
         }
     }
 }
